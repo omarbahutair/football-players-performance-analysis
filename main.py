@@ -1,6 +1,6 @@
 import openpyxl as xl
 import networkx as nx
-from most_important_player import most_important_player
+from most_important_player import playersImportance
 from most_possible_passes import mostPossiblePasses
 from matplotlib import pyplot as plt
 
@@ -57,7 +57,5 @@ for graph in graphs:
             total_graph._node[node[0]]['number'] = node[1]['number']
 
 
-
-
-
-print(most_important_player(total_graph))
+#print(mostImportantPlayer(total_graph))
+print(len(list(mostPossiblePasses(total_graph))))
