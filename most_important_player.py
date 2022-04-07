@@ -24,9 +24,11 @@ def sortKeysByValue(dictionary):
 
 
 def playersImportance(graph, property):
+    betweenness = nx.betweenness_centrality(graph)
     sortedKeys = sortKeysByValue(nx.betweenness_centrality(graph))
-    sortedProperty = []
+    sortedKeys.reverse()
+    sortedProperty = {}
     for key in sortedKeys:
-        sortedProperty.append(graph._node[key][property])
+        sortedProperty[graph._node[key][property]] = betweenness[key]
 
     return sortedProperty

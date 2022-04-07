@@ -47,7 +47,7 @@ graph_60_70 = generateGraph(113, 3, 14)
 graph_70_80 = generateGraph(131, 3, 14)
 graph_80_90 = generateGraph(149, 3, 14)
 
-graphs = [graph_0_10, graph_10_20, graph_30_40, graph_40_50, graph_50_60, graph_60_70, graph_70_80, graph_80_90]
+graphs = [graph_0_10, graph_10_20, graph_20_30,graph_30_40, graph_40_50, graph_50_60, graph_60_70, graph_70_80, graph_80_90]
 
 
 for graph in graphs:
@@ -78,7 +78,22 @@ for clq in best_cliques:
     print("\n\n")
 
 sorted_players = playersImportance(total_graph,"name")
-print(sorted_players)
+sum = 0
+for k, v in sorted_players.items():
+    print(f"{k}: {v}")
+    sum += v
 
+print(f'\n{sum}\n\n')
 most_possible_passes = mostPossiblePasses(total_graph, "name")
-print(most_possible_passes)
+for Pass in most_possible_passes:
+    print(Pass)
+
+
+print('stats:')
+for i in range(0, len(graphs)):
+    print(f'''
+    match {i*10} to {10*(i+1)}:
+    Clustring: {nx.cluster.clustering(graphs[i])}
+    Page Rank: {nx.pagerank(total_graph)}
+    Betweeness: {nx.betweenness_centrality(graphs[i])}
+    ''')
