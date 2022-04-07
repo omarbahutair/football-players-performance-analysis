@@ -1,8 +1,10 @@
 import openpyxl as xl
 import networkx as nx
+import most_important_player
 from most_important_player import playersImportance
 from most_possible_passes import mostPossiblePasses
 from matplotlib import pyplot as plt
+import find_good_cliques as fgc
 
 match_1 = xl.load_workbook("Book1.xlsx")
 sheet = match_1["Sheet1"]
@@ -57,5 +59,26 @@ for graph in graphs:
             total_graph._node[node[0]]['number'] = node[1]['number']
 
 
-#print(mostImportantPlayer(total_graph))
-print(len(list(mostPossiblePasses(total_graph))))
+
+
+cliques = list(nx.enumerate_all_cliques(total_graph.to_undirected()))
+
+
+#to find all good cliques
+best_cliques = [] # if each node has an out degree higher than 10 then its a good clique
+
+for clq in cliques:
+    if fgc.isGoodClique(clq, total_graph, 10) and len(list(clq)) <= 3:
+        best_cliques.append(clq)
+
+
+for clq in best_cliques:
+    print("clique: " + str(best_cliques.index(clq)))
+    fgc.printClq(clq, total_graph, "name")
+    print("\n\n")
+
+sorted_players = playersImportance(total_graph,"name")
+print(sorted_players)
+
+most_possible_passes = mostPossiblePasses(total_graph, "name")
+print(most_possible_passes)
