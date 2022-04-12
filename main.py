@@ -1,6 +1,5 @@
 import openpyxl as xl
 import networkx as nx
-import most_important_player
 from most_important_player import playersImportance
 from most_possible_passes import mostPossiblePasses
 from matplotlib import pyplot as plt
@@ -97,13 +96,6 @@ for graph in graphs_match2:
             match2._node[node[0]]['name'] = node[1]['name']
             match2._node[node[0]]['position'] = node[1]['position']
             match2._node[node[0]]['number'] = node[1]['number']
-
-
-
-
-
-
-
 
 
 
