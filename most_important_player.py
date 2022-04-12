@@ -7,6 +7,20 @@ def get_key(my_dict, val):
              return key
 """
 
+'''
+dict = {
+    2: 10,
+    1: 20,
+    3: 15
+}
+
+dict = {
+    1: 20,
+    2: 10,
+    3: 15
+}
+'''
+
 def sortKeysByValue(dictionary):
     dict_vals = list(dictionary.values())
     dict_keys = list(dictionary.keys())

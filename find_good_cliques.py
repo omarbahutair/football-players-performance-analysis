@@ -20,6 +20,6 @@ def isGoodClique(clq, graph, minimal_out_degree):
     sum_out_degree = 0
     for nde in clq:
         if getOutDegreeOfANode(nde, sub_graph) < minimal_out_degree:
-            return False;
+            return False
 
-    return True;
+    return True
